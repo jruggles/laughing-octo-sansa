@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
 
-    public GameObject frontOfKart;
-    public GameObject backOfKart;
     public float maxSpeed = 0;
     public float minSpeed = 0;
     public float movementSpeed = 0;
