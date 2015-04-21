@@ -25783,7 +25783,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 415
---- !u!4 &1092962483 stripped
+--- !u!4 &1092962483
 Transform:
   m_PrefabParentObject: {fileID: 471490, guid: efb37be62c97d2446b76cdd41d7bfe35, type: 2}
   m_PrefabInternal: {fileID: 1588357848}
@@ -30766,6 +30766,8 @@ Terrain:
     serializedVersion: 2
     rgba: 4286545791
   m_LegacyShininess: .078125
+  m_UseDefaultSmoothness: 1
+  m_DefaultSmoothness: 0
   m_MaterialTemplate: {fileID: 0}
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: 1
@@ -35201,7 +35203,8 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11433140, guid: efb37be62c97d2446b76cdd41d7bfe35, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: efb37be62c97d2446b76cdd41d7bfe35, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1594065683
@@ -46665,7 +46668,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 604
---- !u!1 &2136216607 stripped
+--- !u!1 &2136216607
 GameObject:
   m_PrefabParentObject: {fileID: 183980, guid: efb37be62c97d2446b76cdd41d7bfe35, type: 2}
   m_PrefabInternal: {fileID: 1588357848}
@@ -46681,8 +46684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1092962483}
-  distance: 10
-  height: 5
+  distance: 25
+  height: 15
   heightDamping: 2
   rotationDamping: 3
 --- !u!1 &2138038954
