@@ -2553,7 +2553,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 121240720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.7000008, y: 40.2999992, z: -174.100006}
+  m_LocalPosition: {x: 60.0999985, y: 40.2999992, z: -182.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2124123609}
@@ -14614,7 +14614,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 592742464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.1000004, y: 40.2999992, z: -173.600006}
+  m_LocalPosition: {x: 29.3999996, y: 40.2999992, z: -182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2124123609}
@@ -30994,7 +30994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2ac2e4eba8cba47bf4624c08fdbe38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next: {fileID: 1292564608}
+  next: {fileID: 1690971353}
   isStart: 0
 --- !u!1 &1300640062
 GameObject:
@@ -37175,7 +37175,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1599074580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -483.299988, y: 4, z: -146.800003}
+  m_LocalPosition: {x: -489.600006, y: 4, z: -157.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2124123609}
@@ -38806,7 +38806,6 @@ GameObject:
   - 92: {fileID: 1687897149}
   - 124: {fileID: 1687897148}
   - 81: {fileID: 1687897147}
-  - 114: {fileID: 1687897146}
   - 114: {fileID: 1687897151}
   m_Layer: 0
   m_Name: Main Camera
@@ -38827,23 +38826,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1853438768}
   m_RootOrder: 1
---- !u!114 &1687897146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11433140, guid: efb37be62c97d2446b76cdd41d7bfe35,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687897144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39571123a83af00479500a5d17ff15c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0
-  minSpeed: 0
-  movementSpeed: 0
-  rotatingSpeed: 0
-  vAxis: 0
 --- !u!81 &1687897147
 AudioListener:
   m_ObjectHideFlags: 0
@@ -43371,7 +43353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointContainer: {fileID: 2124123607}
-  speed: 30
+  speed: 0
 --- !u!143 &1853438770
 CharacterController:
   m_ObjectHideFlags: 0

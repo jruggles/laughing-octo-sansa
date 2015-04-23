@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Controller : MonoBehaviour {
+public class firstPersonController : MonoBehaviour {
 
     public float maxSpeed = 0;
     public float minSpeed = 0;
@@ -21,16 +21,16 @@ public class Controller : MonoBehaviour {
     {
 
         vAxis = Input.GetAxis("Vertical");
-
+		Debug.Log (vAxis);
         rotateKart();
 
-        determineMovementSpeed();
+        determineMovementSpeed(vAxis);
 
         SimpleMove(); 
 
 	}
 
-    void determineMovementSpeed()
+    public float determineMovementSpeed(float vAxis)
     {
 
         //If there in input on the vertical axis
@@ -100,6 +100,7 @@ public class Controller : MonoBehaviour {
             }
             
         }
+		return movementSpeed;
     }
 
     void rotateKart()
