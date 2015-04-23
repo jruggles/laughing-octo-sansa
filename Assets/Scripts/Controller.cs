@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour {
     public float movementSpeed = 0;
     public float rotatingSpeed = 0;
     public float vAxis = 0;
-
+    
 
     CharacterController charControl;
 
