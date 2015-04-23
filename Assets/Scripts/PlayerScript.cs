@@ -67,7 +67,7 @@ public class PlayerScript : MonoBehaviour {
 		} else  {
 			determineMovementSpeed(1);
 		}
-        if (relativeWaypointPosition.magnitude < 15)
+        if (relativeWaypointPosition.magnitude < 10)
         {
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
             print("Current waypoint: " + currentWaypoint);
