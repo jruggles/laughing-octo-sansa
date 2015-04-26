@@ -18420,6 +18420,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 383835626}
+  - {fileID: 1687897145}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1 &635374660
@@ -25716,6 +25717,11 @@ MonoBehaviour:
   movementSpeed: 0
   rotatingSpeed: 150
   vAxis: 0
+  HUD: {fileID: 815560290}
+  finishLine: {fileID: 939336498}
+  raceTimeHUD: {fileID: 2084105457}
+  lapTimeHUD: {fileID: 507740649}
+  lapNumberHUD: {fileID: 608099011}
 --- !u!23 &870962837
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28046,7 +28052,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939336498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e3eb1e5d4d32fa4f9a718cc311a4fe8, type: 3}
   m_Name: 
@@ -47453,11 +47459,11 @@ Transform:
   m_PrefabParentObject: {fileID: 489686, guid: efb37be62c97d2446b76cdd41d7bfe35, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1687897144}
-  m_LocalRotation: {x: .13052623, y: 0, z: 0, w: .991444886}
-  m_LocalPosition: {x: -7.63016748, y: 3.89999962, z: -32.0531311}
+  m_LocalRotation: {x: .130526245, y: -2.98023206e-08, z: 7.45058015e-09, w: .991444886}
+  m_LocalPosition: {x: -.333545417, y: 4, z: -32.6002388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1853438768}
+  m_Father: {fileID: 633635903}
   m_RootOrder: 1
 --- !u!81 &1687897147
 AudioListener:
@@ -47527,7 +47533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292836f3b9837a74692c7051a9d0d18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1853438768}
+  target: {fileID: 633635903}
   distance: 50
   height: 10
   heightDamping: 2
@@ -52422,7 +52428,7 @@ GameObject:
   - 114: {fileID: 1853438769}
   m_Layer: 2
   m_Name: AI
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52438,7 +52444,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 90517640}
-  - {fileID: 1687897145}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &1853438769

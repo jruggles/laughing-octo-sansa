@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 public class firstPersonController : MonoBehaviour {
 
@@ -7,9 +9,24 @@ public class firstPersonController : MonoBehaviour {
     public float minSpeed = 0;
     public float movementSpeed = 0;
     public float rotatingSpeed = 0;
-    public float vAxis = 0;	
+    public float vAxis = 0;
+    public Canvas HUD;
+    public GameObject finishLine;
+    public Text raceTimeHUD;
+    public Text lapTimeHUD;
+    public Text lapNumberHUD;
+    private bool onFinish = false;
+
+    private int lap = 0;
+    private float lapTime = 0;
 
     CharacterController charControl;
+
+    void Start()
+    {
+        lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
+        lapNumberHUD.text = "Lap: " + (lap.ToString());
+    }
 
     void Awake() {
         charControl = GetComponent<CharacterController>();
@@ -18,7 +35,8 @@ public class firstPersonController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        //print (Time.time);
+        raceTimeHUD.text = (Time.time.ToString());
         vAxis = Input.GetAxis("Vertical");
 		//Debug.Log (vAxis);
         rotateKart();
@@ -28,6 +46,17 @@ public class firstPersonController : MonoBehaviour {
         SimpleMove(); 
 
 	}
+
+    public void OnCollisionEnter()
+    {
+
+            Debug.Log("Hit");
+            lap++;
+            lapTime = Time.time;
+            lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
+            lapNumberHUD.text = "Lap: " + (lap.ToString());
+        
+    }
 
     public float determineMovementSpeed(float vAxis)
     {
@@ -114,9 +143,19 @@ public class firstPersonController : MonoBehaviour {
         Debug.DrawRay(rayStartBack, -Vector3.up * -1.5f, Color.cyan);
         if (Physics.Raycast(ray1, out frontHitObj, 2.0f) && Physics.Raycast(ray2, out backHitObj, 2.0f))
         { 
-            //Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
+            Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
             if (backHitObj.collider.gameObject == frontHitObj.collider.gameObject)
             {
+                if (backHitObj.collider.gameObject == finishLine && onFinish == false)
+                {
+                    onFinish = true;
+                    OnCollisionEnter();
+                    
+                }
+                else if (backHitObj.collider.gameObject != finishLine)
+                {
+                    onFinish = false;
+                }
 
               Quaternion rotation = Quaternion.FromToRotation(transform.up, frontHitObj.normal);
              transform.rotation = rotation * transform.rotation;

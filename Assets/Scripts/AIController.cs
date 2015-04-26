@@ -24,7 +24,7 @@ public class AIController : MonoBehaviour {
 
         waypoints = new Transform[potentialWaypoints.Length - 1];
 
-        print("PlayerScript:  " + potentialWaypoints.Length);
+       // print("PlayerScript:  " + potentialWaypoints.Length);
 
         for (int i = 0, j = 0; i < potentialWaypoints.Length; i++)
         {
@@ -53,7 +53,7 @@ public class AIController : MonoBehaviour {
         Debug.DrawRay(rayStartBack, -Vector3.up * -1.5f, Color.cyan);
         if (Physics.Raycast(ray1, out frontHitObj, 2.0f) && Physics.Raycast(ray2, out backHitObj, 2.0f))
         {
-            Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
+           // Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
             if (backHitObj.collider.gameObject == frontHitObj.collider.gameObject)
             {
                 Quaternion rotation = Quaternion.FromToRotation(transform.up, frontHitObj.normal);
@@ -81,7 +81,7 @@ public class AIController : MonoBehaviour {
         if (relativeWaypointPosition.magnitude < 10)
         {
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
-            print("Current waypoint: " + currentWaypoint);
+            //print("Current waypoint: " + currentWaypoint);
         }
 
         return relativeWaypointPosition;

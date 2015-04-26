@@ -20,18 +20,18 @@ public class GameManagerScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		print (Time.time);
+		//print (Time.time);
 		raceTimeHUD.text = (Time.time.ToString());
 	}
 
 	void OnCollisionEnter(Collision coll){
-		if (coll.gameObject.tag == "Player"){
+		//if (coll.gameObject.tag == "Player"){
 			Debug.Log("Hit");
 			lap++;
 			lapTime = Time.time;
 			lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
 			lapNumberHUD.text = "Lap: " + (lap.ToString());
-		}
+		//}
 	}
 
 }
