@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 
 public class firstPersonController : MonoBehaviour {
-
     public float maxSpeed = 0;
     public float minSpeed = 0;
     public float movementSpeed = 0;
@@ -16,6 +15,9 @@ public class firstPersonController : MonoBehaviour {
     public Text lapTimeHUD;
     public Text lapNumberHUD;
     private bool onFinish = false;
+    private float currentLap= 0;
+    private float previousLap= 0;
+    private float lapTotal = 0;
 
     private int lap = 0;
     private float lapTime = 0;
@@ -25,7 +27,7 @@ public class firstPersonController : MonoBehaviour {
     void Start()
     {
         lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
-        lapNumberHUD.text = "Lap: " + (lap.ToString());
+        lapNumberHUD.text = "Lap: " + (lap.ToString()) + "/3";
     }
 
     void Awake() {
@@ -52,9 +54,27 @@ public class firstPersonController : MonoBehaviour {
 
             Debug.Log("Hit");
             lap++;
-            lapTime = Time.time;
-            lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
-            lapNumberHUD.text = "Lap: " + (lap.ToString());
+            
+            lapTotal += previousLap;
+            if (lap == 1)
+            {
+                currentLap = 0;
+            }
+            else
+            {
+                currentLap = Time.time - lapTotal;
+            }
+            if (lap == 4)
+            {
+                GetComponent<firstPersonController>().enabled = false;
+                GetComponent<AIController>().enabled = true;
+
+            }
+                // lapTime = Time.time - previousLap;
+            lapTimeHUD.text = "Previous Lap: " + (currentLap.ToString());
+            lapNumberHUD.text = "Lap: " + (lap.ToString()) + "/3";
+            previousLap = currentLap;
+
         
     }
 
