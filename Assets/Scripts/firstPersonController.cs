@@ -7,8 +7,7 @@ public class firstPersonController : MonoBehaviour {
     public float minSpeed = 0;
     public float movementSpeed = 0;
     public float rotatingSpeed = 0;
-    public float vAxis = 0;
-    
+    public float vAxis = 0;	
 
     CharacterController charControl;
 
@@ -21,7 +20,7 @@ public class firstPersonController : MonoBehaviour {
     {
 
         vAxis = Input.GetAxis("Vertical");
-		Debug.Log (vAxis);
+		//Debug.Log (vAxis);
         rotateKart();
 
         determineMovementSpeed(vAxis);
@@ -115,7 +114,7 @@ public class firstPersonController : MonoBehaviour {
         Debug.DrawRay(rayStartBack, -Vector3.up * -1.5f, Color.cyan);
         if (Physics.Raycast(ray1, out frontHitObj, 2.0f) && Physics.Raycast(ray2, out backHitObj, 2.0f))
         { 
-            Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
+            //Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
             if (backHitObj.collider.gameObject == frontHitObj.collider.gameObject)
             {
 

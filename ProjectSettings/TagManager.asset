@@ -10,6 +10,7 @@ TagManager:
   - LeftRear
   - Rear Wheel
   - Front Wheel
+  - Finish
   layers:
   - Default
   - TransparentFX
