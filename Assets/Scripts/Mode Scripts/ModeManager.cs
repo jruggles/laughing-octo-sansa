@@ -23,9 +23,15 @@ public class ModeManager : MonoBehaviour
 	//==========================================================================//
 	public enum Avatar
 	{
-		Moe,
-		Larry,
-		Curly
+		Kart1Player1,
+		Kart1Player2,
+		Kart1Player3,
+		Kart2Player1,
+		Kart2Player2,
+		Kart2Player3,
+		Kart3Player1,
+		Kart3Player2,
+		Kart3Player3
 	};
 
 	//==========================================================================//
@@ -87,7 +93,6 @@ public class ModeManager : MonoBehaviour
 		volSettings.areEffectsMuted = false;
 
 		playerChoices.track = Track.Cloud;
-		playerChoices.avatar = Avatar.Moe;
 
 		ChangeTo (Mode.Initial);
 	}
@@ -128,18 +133,18 @@ public class ModeManager : MonoBehaviour
 			//	There's no going back here anyway
 			hist.Clear ();
 			hist.Push (newMode);
-			print ("Track: " + playerChoices.track);
+
 			switch(playerChoices.track)
 			{
-			case	Track.Cloud:
-				Application.LoadLevel ("Cloud Track");
-				break;
-			case	Track.Forest:
-				Application.LoadLevel ("Forest Track");
-				break;
-			case	Track.Wooden:
-				Application.LoadLevel ("Wooden Track");
-				break;
+				case	Track.Cloud:
+					Application.LoadLevel ("Cloud Track");
+					break;
+				case	Track.Forest:
+					Application.LoadLevel ("Forest Track");
+					break;
+				case	Track.Wooden:
+					Application.LoadLevel ("Wooden Track");
+					break;
 			}
 		}
 		else

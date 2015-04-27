@@ -4,63 +4,129 @@ using System.Collections;
 
 public class CharacterModeScript : MonoBehaviour
 {
-	Toggle	moeToggle;
-	Toggle	larryToggle;
-	Toggle	curlyToggle;
-	
+	Toggle[,]	tog = new Toggle[3,3];
+
 	//--------------------------------------------------------------------------//
 	//	Start
 	//--------------------------------------------------------------------------//
 	void Start ()
 	{
-		moeToggle	=	GameObject.Find
-						("MoeToggle").GetComponent<Toggle>		();
-		
-		larryToggle	=	GameObject.Find
-						("LarryToggle").GetComponent<Toggle>	();
-		
-		curlyToggle	=	GameObject.Find
-						("CurlyToggle").GetComponent<Toggle>	();
-		
+		string togName;
+
+		ModeManager.playerChoices.avatar = ModeManager.Avatar.Kart1Player1;
+
+		for (int k = 1; k <= 3; k++)
+			for(int p = 1; p <= 3; p++)
+			{
+				togName	=	"K" + k + "P" + p + "Toggle";
+				tog[k-1,p-1] = GameObject.Find(togName).GetComponent<Toggle>();
+			}
+
+		//	Initialize toggles
+
 		switch (ModeManager.playerChoices.avatar)
 		{
-			case	ModeManager.Avatar.Moe:
-				moeToggle.isOn		=	true;
-				larryToggle.isOn	= false;
-				curlyToggle.isOn	= false;
-				break;
-			case	ModeManager.Avatar.Larry:
-				larryToggle.isOn	=	true;
-				moeToggle.isOn		= false;
-				curlyToggle.isOn	= false;
-				break;
-			case	ModeManager.Avatar.Curly:
-				moeToggle.isOn		= false;
-				larryToggle.isOn	= false;
-				curlyToggle.isOn	=	true;
-				break;
+		case	ModeManager.Avatar.Kart1Player1:
+			tog[0,0].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart1Player2:
+			tog[0,1].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart1Player3:
+			tog[0,2].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart2Player1:
+			tog[1,0].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart2Player2:
+			tog[1,1].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart2Player3:
+			tog[1,2].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart3Player1:
+			tog[2,0].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart3Player2:
+			tog[2,1].isOn		=	true;
+			break;
+		case	ModeManager.Avatar.Kart3Player3:
+			tog[2,2].isOn		=	true;
+			break;
 		}
 	}	
 	//--------------------------------------------------------------------------//
-	//	MoeToggleChanged
+	//	K1P1ToggleChanged
 	//--------------------------------------------------------------------------//
-	public void MoeToggleChanged	(bool isOn)
+	public void K1P1ToggleChanged	(bool isOn)
 	{
-		if (isOn)	ModeManager.playerChoices.avatar	= ModeManager.Avatar.Moe;
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart1Player1;
 	}
 	//--------------------------------------------------------------------------//
-	//	LarryToggleChanged
+	//	K1P2ToggleChanged
 	//--------------------------------------------------------------------------//
-	public void LarryToggleChanged (bool isOn)
+	public void K1P2ToggleChanged	(bool isOn)
 	{
-		if (isOn)	ModeManager.playerChoices.avatar	= ModeManager.Avatar.Larry;
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart1Player2;
 	}
 	//--------------------------------------------------------------------------//
-	//	CurlyToggleChanged
+	//	K1P3ToggleChanged
 	//--------------------------------------------------------------------------//
-	public void CurlyToggleChanged (bool isOn)
+	public void K1P3ToggleChanged	(bool isOn)
 	{
-		if (isOn)	ModeManager.playerChoices.avatar	= ModeManager.Avatar.Curly;
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart1Player3;
+	}
+
+	//--------------------------------------------------------------------------//
+	//	K2P1ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K2P1ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart2Player1;
+	}
+	//--------------------------------------------------------------------------//
+	//	K2P2ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K2P2ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart2Player2;
+	}
+	//--------------------------------------------------------------------------//
+	//	K2P3ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K2P3ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart2Player3;
+	}
+	//--------------------------------------------------------------------------//
+	//	K3P1ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K3P1ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart3Player1;
+	}
+	//--------------------------------------------------------------------------//
+	//	K3P2ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K3P2ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart3Player2;
+	}
+	//--------------------------------------------------------------------------//
+	//	K3P3ToggleChanged
+	//--------------------------------------------------------------------------//
+	public void K3P3ToggleChanged	(bool isOn)
+	{
+		if (isOn)
+			ModeManager.playerChoices.avatar	= ModeManager.Avatar.Kart3Player3;
 	}
 	//--------------------------------------------------------------------------//
 	//	BackClickEvent

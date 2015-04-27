@@ -1287,11 +1287,12 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 2035885877}
-  - 33: {fileID: 2035885876}
+  - 224: {fileID: 2035885877}
   - 65: {fileID: 2035885875}
   - 23: {fileID: 2035885874}
   - 114: {fileID: 2035885878}
+  - 222: {fileID: 2035885879}
+  - 33: {fileID: 2035885876}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1309,7 +1310,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8163add9ddb514545be4e9d21e14d035, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1342,18 +1343,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2035885873}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &2035885877
-Transform:
+--- !u!224 &2035885877
+RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2035885873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -382.380005, y: -299.660004, z: 0}
-  m_LocalScale: {x: 10.2399998, y: 7.67999983, z: .00999999978}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 810, y: 575, z: .00999999978}
   m_Children: []
   m_Father: {fileID: 2136942326}
   m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &2035885878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,6 +1371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e92523c9077e054185fbad731321c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &2035885879
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2035885873}
 --- !u!1 &2136942325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1388,8 @@ GameObject:
   - 223: {fileID: 2136942329}
   - 114: {fileID: 2136942328}
   - 114: {fileID: 2136942327}
+  - 222: {fileID: 2136942331}
+  - 114: {fileID: 2136942330}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1461,3 +1475,29 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &2136942330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136942325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Texture: {fileID: 2800000, guid: 5cdf6d1e1348e4635ae4226555bded18, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &2136942331
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136942325}
