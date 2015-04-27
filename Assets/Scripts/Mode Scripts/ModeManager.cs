@@ -33,23 +33,23 @@ public class ModeManager : MonoBehaviour
 	//==========================================================================//
 	public struct PlayerChoices
 	{
-		Track	track;
-		Avatar 	avatar;
+		public Track	track;
+		public Avatar 	avatar;
 	};
 	
 	//==========================================================================//
 	//	Settings - audio volumes, etc/.
 	//==========================================================================//
-	public struct Settings
+	public struct VolSettings
 	{
-		float 	musicVol;
-		bool	isMusicMuted;
-		float 	effectsVol;
-		bool 	areEffectsMuted;
+		public float 	musicVol;
+		public bool		isMusicMuted;
+		public float 	effectsVol;
+		public bool 	areEffectsMuted;
 	};
 
-	public static PlayerChoices	playerChoices;
-	public static Settings			settings;
+	public static PlayerChoices		playerChoices	=	new PlayerChoices	();
+	public static VolSettings		volSettings		=	new VolSettings		();
 	//////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
 
@@ -79,7 +79,15 @@ public class ModeManager : MonoBehaviour
 	{
 		DontDestroyOnLoad (this.gameObject);
 
-		//	Set defaults on playerChoices and settings here
+		//	Set defaults on playerChoices and audioSettings here
+
+		volSettings.musicVol = 50.0F;
+		volSettings.isMusicMuted = false;
+		volSettings.effectsVol = 50.0F;
+		volSettings.areEffectsMuted = false;
+
+		playerChoices.track = Track.Cloud;
+		playerChoices.avatar = Avatar.Moe;
 
 		ChangeTo (Mode.Initial);
 	}

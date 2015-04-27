@@ -11,3 +11,25 @@ EditorBuildSettings:
     path: Assets/Forest Track.unity
   - enabled: 1
     path: Assets/Wooden Track.unity
+  - enabled: 1
+    path: Assets/Loader.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/About Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Character Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Game Over Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Game Over Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Initial Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Learn Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Options Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Quit Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Restart Mode.unity
+  - enabled: 1
+    path: Assets/Mode Scenes/Track Mode.unity

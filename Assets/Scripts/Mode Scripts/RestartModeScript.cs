@@ -17,7 +17,7 @@ public class RestartModeScript : MonoBehaviour {
 	//--------------------------------------------------------------------------//
 	public void NewGameClickEvent ()
 	{
-		Application.Quit ();
+		ModeManager.ChangeTo (ModeManager.Mode.Track);
 	}
 	//--------------------------------------------------------------------------//
 	//	ContinueClickEvent
