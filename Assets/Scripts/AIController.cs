@@ -3,13 +3,21 @@ using System.Collections;
 
 public class AIController : MonoBehaviour {
 
+    public float maxSpeed = 0;
+    public float minSpeed = 0;
+    public float movementSpeed = 0;
+    public float rotatingSpeed = 0;
     private Transform[] waypoints;
     private int currentWaypoint = 0;
     public GameObject waypointContainer;
-    public float speed;
     private float rotationSpeed = 4.0f;
     private Quaternion lookRotation;
 	private Vector3 relativeWaypointPosition;
+    private bool onFinish = false;
+    public GameObject finishLine;
+
+    public int lap = 0;
+    public float lapTime = 0;
 
     CharacterController charControl;
 
@@ -24,8 +32,6 @@ public class AIController : MonoBehaviour {
 
         waypoints = new Transform[potentialWaypoints.Length - 1];
 
-       // print("PlayerScript:  " + potentialWaypoints.Length);
-
         for (int i = 0, j = 0; i < potentialWaypoints.Length; i++)
         {
             if (potentialWaypoints[i] != waypointContainer.transform)
@@ -36,9 +42,10 @@ public class AIController : MonoBehaviour {
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         rotateAndMoveKart();
+        NavigateTowardWaypoint();
     }
 
     void rotateAndMoveKart()
@@ -53,19 +60,24 @@ public class AIController : MonoBehaviour {
         Debug.DrawRay(rayStartBack, -Vector3.up * -1.5f, Color.cyan);
         if (Physics.Raycast(ray1, out frontHitObj, 2.0f) && Physics.Raycast(ray2, out backHitObj, 2.0f))
         {
-           // Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
             if (backHitObj.collider.gameObject == frontHitObj.collider.gameObject)
             {
+                if (backHitObj.collider.gameObject == finishLine && onFinish == false)
+                {
+                    onFinish = true;
+                    OnCollisionEnter();
+
+                }
+                else if (backHitObj.collider.gameObject != finishLine)
+                {
+                    onFinish = false;
+                }
+
                 Quaternion rotation = Quaternion.FromToRotation(transform.up, frontHitObj.normal);
                 transform.rotation = rotation * transform.rotation;
             }
-        }
-
-        Vector3 movement = NavigateTowardWaypoint();
-        lookRotation = Quaternion.LookRotation(movement);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * speed;
-        charControl.SimpleMove(forward);
+        }  
+    
     }
 
     Vector3 NavigateTowardWaypoint()
@@ -73,18 +85,35 @@ public class AIController : MonoBehaviour {
         relativeWaypointPosition =
             waypoints[currentWaypoint].position - transform.position;
 
-		if (relativeWaypointPosition.magnitude < 30) {
+		if (relativeWaypointPosition.magnitude < 20) {
 			determineMovementSpeed (0);
 		} else  {
 			determineMovementSpeed(1);
 		}
-        if (relativeWaypointPosition.magnitude < 10)
+        if (relativeWaypointPosition.magnitude < 15)
         {
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
-            //print("Current waypoint: " + currentWaypoint);
         }
 
+        float angle = AngleSigned(relativeWaypointPosition, transform.forward, transform.up);
+        if (angle > 5 && movementSpeed != 0)
+        {
+            //Vector3.Slerp()
+            transform.Rotate(new Vector3(0, -1f * rotatingSpeed * Time.deltaTime * ((movementSpeed / maxSpeed) + 0.25f), 0));
+           
+        
+        }
+        else if (angle < -5 && movementSpeed != 0)
+        {
+            transform.Rotate(new Vector3(0, 1f * rotatingSpeed * Time.deltaTime * ((movementSpeed / 50) + 0.25f), 0)); 
+        }
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * movementSpeed;
+        charControl.SimpleMove(forward);
+
         return relativeWaypointPosition;
+
+
     }
 
 	public void determineMovementSpeed(float vAxis)
@@ -93,31 +122,31 @@ public class AIController : MonoBehaviour {
 		if (vAxis != 0)
 		{
 			//And if movement speed is between the min speed (-20) and the max speed (40)
-			if (speed <= 50 && speed >= -20)
+            if (movementSpeed <= maxSpeed && movementSpeed >= minSpeed)
 			{
 				//If the player is trying to move forward (posititve vertical axis)
 				if (vAxis > 0)
 				{
 					//If you are currently moving backwards and trying to move forward
-                    if (speed < 0)
+                    if (movementSpeed < 0)
                     {
-                        speed += Time.deltaTime * 75; //Brake hard
+                        movementSpeed += Time.deltaTime * 75; //Brake hard
                     }
                     else //Else accelerate forward normally
                     {
-                        speed += Time.deltaTime * 20;
+                        movementSpeed += Time.deltaTime * 20;
                     }
 				} 
 				//If the player is trying to move backwards (negative vertical axis)
 				else if (vAxis < 0)
 				{
 					//If the player is currently moving forward and trying to move backwards
-					if (speed > 0)
+                    if (movementSpeed > 0)
 					{
-						speed -= Time.deltaTime * 75; //Brake hard
+                        movementSpeed -= Time.deltaTime * 75; //Brake hard
 					} else //Else accelerate backwards normally (half the speed as accelerating forward normally)
 					{
-						speed -= Time.deltaTime * 10;
+                        movementSpeed -= Time.deltaTime * 10;
 					}     
 				}	
 			}
@@ -126,25 +155,42 @@ public class AIController : MonoBehaviour {
 		else 
 		{
 			//If the player is moving forward
-			if (speed > 0)
+            if (movementSpeed > 0)
 			{
-				speed -= Time.deltaTime * 25; //Then casually brake
+                movementSpeed -= Time.deltaTime * 25; //Then casually brake
 				//If the movement speed is <1 then set it to 0 (so you won't flip-flop between negative and positive)
-				if (speed < 1)
+                if (movementSpeed < 1)
 				{
-					speed = 0;
+                    movementSpeed = 0;
 				}
 			} 
 			//Else if the player is moving backwards
-			else if (speed < 0) 
+            else if (movementSpeed < 0) 
 			{
-				speed += Time.deltaTime * 35; //Then mediumly (new word) brake - Sligtly faster braking if backing up
+                movementSpeed += Time.deltaTime * 35; //Then mediumly (new word) brake - Sligtly faster braking if backing up
 				//If the movement speed is >-1 then set it to 0 (so you won't flip-flop between negative and positive)
-				if (speed > -1)
+                if (movementSpeed > -1)
 				{
-					speed = 0;
+                    movementSpeed = 0;
 				}
 			}
 		}
 	}
+
+    public static float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n)
+    {
+        return Mathf.Atan2(
+            Vector3.Dot(n, Vector3.Cross(v1, v2)),
+            Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;
+    }
+
+    public void OnCollisionEnter()
+    {
+        lap++;
+
+        if (lap == 4)
+        {
+            lapTime = Time.time;
+        }
+    }
 }

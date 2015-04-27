@@ -20,7 +20,7 @@ public class WaypointScript : MonoBehaviour {
         }
     }
 
-   void OnDrawGizmos()
+    void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.3f);
         Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
@@ -42,8 +42,5 @@ public class WaypointScript : MonoBehaviour {
         {
             return transform.position;
         }
-   
-}
-
-
+    }
 }

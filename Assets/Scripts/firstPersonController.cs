@@ -66,6 +66,7 @@ public class firstPersonController : MonoBehaviour {
             }
             if (lap == 4)
             {
+                lapTime = Time.deltaTime;
                 GetComponent<firstPersonController>().enabled = false;
                 GetComponent<AIController>().enabled = true;
 

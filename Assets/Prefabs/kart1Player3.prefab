@@ -706,8 +706,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fcd4aeea3344e24da065aeac86be60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 50
+  minSpeed: -30
+  movementSpeed: 0
+  rotatingSpeed: 150
   waypointContainer: {fileID: 0}
-  speed: 0
+  finishLine: {fileID: 0}
+  lap: 0
+  lapTime: 0
 --- !u!114 &11481692
 MonoBehaviour:
   m_ObjectHideFlags: 1
