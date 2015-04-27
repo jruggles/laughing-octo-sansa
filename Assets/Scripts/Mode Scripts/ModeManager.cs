@@ -128,9 +128,19 @@ public class ModeManager : MonoBehaviour
 			//	There's no going back here anyway
 			hist.Clear ();
 			hist.Push (newMode);
-
-			//	For Play mode, scene needs to be chosen by track
-			//	Need to do LoadLevel here for correct track
+			print ("Track: " + playerChoices.track);
+			switch(playerChoices.track)
+			{
+			case	Track.Cloud:
+				Application.LoadLevel ("Cloud Track");
+				break;
+			case	Track.Forest:
+				Application.LoadLevel ("Forest Track");
+				break;
+			case	Track.Wooden:
+				Application.LoadLevel ("Wooden Track");
+				break;
+			}
 		}
 		else
 		{
