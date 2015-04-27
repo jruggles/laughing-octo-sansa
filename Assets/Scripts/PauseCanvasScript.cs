@@ -27,7 +27,7 @@ public class PauseCanvasScript : MonoBehaviour {
 
 	public void loadLevel()
 	{
-		Application.LoadLevel(2);
+		Application.LoadLevel(Application.loadedLevel);
 		Time.timeScale = (play++ % 2);
 	}
 	
