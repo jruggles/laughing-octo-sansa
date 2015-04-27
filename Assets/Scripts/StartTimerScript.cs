@@ -8,28 +8,36 @@ public class StartTimerScript : MonoBehaviour {
 	public Canvas HUD;
 	public Text TimerText;
 
-	// Use this for initialization
-	void Start () {
-		//Time.timeScale = 0;
+	void Start ()
+	{
+		Time.timeScale = 0;
+		StartCoroutine ("CountDown");
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	
-		if (Time.deltaTime < 1) {
-			TimerText.text = ("3");
-		} else if (Time.deltaTime < 2 && Time.deltaTime > 1) {
-			TimerText.text = ("2");
-		}else{
-			TimerText.text = ("1");
-		}
-	
-
-		if (Time.deltaTime == 3) {
-			TimerCanvas.enabled = false;
-			HUD.enabled = true;
-			Time.timeScale = 1;
+	public static IEnumerator WaitForRealTime(float delay)
+	{
+		while(true)
+		{
+			float pauseEndTime = Time.realtimeSinceStartup + delay;
+			while (Time.realtimeSinceStartup < pauseEndTime)
+			{
+				yield return 0;
+			}
+			break;
 		}
 	}
+
+	IEnumerator CountDown()
+	{
+		print ("Ouside for loop.");
+		for (int i = 3; i > 0; i--)
+		{
+			print (i);
+			TimerText.text	=	i.ToString ();
+			yield return StartCoroutine(WaitForRealTime(1));
+		}
+		TimerText.text = "";
+		Time.timeScale = 1;
+	}
+
 }
