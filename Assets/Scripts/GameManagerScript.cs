@@ -26,7 +26,7 @@ public class GameManagerScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision coll){
 		if (coll.gameObject.tag == "Player"){
-			Debug.Log("Hit");
+			//Debug.Log("Hit");
 			lap++;
 			lapTime = Time.time;
 			lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());

@@ -14,7 +14,7 @@ SceneSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: .627451003, g: .70588237, b: .70588237, a: 1}
   m_FogMode: 3
   m_FogDensity: .00999999978
