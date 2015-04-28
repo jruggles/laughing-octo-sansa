@@ -86,6 +86,10 @@ public class TrackScript : MonoBehaviour
 		cart.GetComponent<AIController> ().enabled = false;
 		cart.GetComponent<firstPersonController> ().enabled = true;
 
+		//	Turn on camera
+		
+		cart.GetComponentInChildren<Camera> ().enabled = true;
+		
 		//	Make ai carts
 
 		string prefabName1 = "";
@@ -162,6 +166,10 @@ public class TrackScript : MonoBehaviour
 		
 		aiCart1.GetComponent<AIController> ().enabled = true;
 		aiCart1.GetComponent<firstPersonController> ().enabled = false;
+
+		//	Turn off camera
+
+		aiCart1.GetComponentInChildren<Camera> ().enabled = false;
 		
 		//	Create AI 2
 		
@@ -194,6 +202,10 @@ public class TrackScript : MonoBehaviour
 		
 		aiCart2.GetComponent<AIController> ().enabled = true;
 		aiCart2.GetComponent<firstPersonController> ().enabled = false;
+		
+		//	Turn off camera
+		
+		aiCart2.GetComponentInChildren<Camera> ().enabled = false;
 		
 	}	//	Start
 
