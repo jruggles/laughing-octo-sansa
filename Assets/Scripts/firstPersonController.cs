@@ -10,6 +10,7 @@ public class firstPersonController : MonoBehaviour {
     public float rotatingSpeed = 0;
     public float vAxis = 0;
     public Canvas HUD;
+	public Canvas GameOverHUD;
     public GameObject finishLine;
     private Text raceTimeHUD;
     private Text lapTimeHUD;
@@ -33,6 +34,7 @@ public class firstPersonController : MonoBehaviour {
         charControl = GetComponent<CharacterController>();
         finishLine = GameObject.Find("StartFinish");
         HUD = GameObject.Find("HUD").GetComponent<Canvas>();
+		GameOverHUD = GameObject.Find ("GameOverCanvas").GetComponent<Canvas> ();
         raceTimeHUD = GameObject.Find("RaceTime").GetComponent<Text>();
         lapTimeHUD = GameObject.Find("LapTime").GetComponent<Text>();
         lapNumberHUD = GameObject.Find("LapNumber").GetComponent<Text>();
@@ -76,6 +78,11 @@ public class firstPersonController : MonoBehaviour {
                 lapTime = Time.deltaTime;
                 GetComponent<firstPersonController>().enabled = false;
                 GetComponent<AIController>().enabled = true;
+				GameOverHUD.enabled = true;
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					Application.LoadLevel(6);
+				}
 
             }
                 // lapTime = Time.time - previousLap;
