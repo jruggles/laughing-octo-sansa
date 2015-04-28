@@ -45,7 +45,7 @@ public class AIController : MonoBehaviour {
 
     }
 
-    void FixedUpdate()
+    void Update()
     {
         rotateAndMoveKart();
         NavigateTowardWaypoint();
