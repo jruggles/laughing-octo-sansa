@@ -39847,6 +39847,8 @@ Terrain:
     serializedVersion: 2
     rgba: 4286545791
   m_LegacyShininess: .078125
+  m_UseDefaultSmoothness: 1
+  m_DefaultSmoothness: 0
   m_MaterialTemplate: {fileID: 0}
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: 1
@@ -53123,6 +53125,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1862574437}
+  - 114: {fileID: 1862574438}
   m_Layer: 0
   m_Name: Track
   m_TagString: Untagged
@@ -53782,6 +53785,17 @@ Transform:
   - {fileID: 1356395176}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1862574438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1862574436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7d1857357f745499e73cd3f3fbcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1868085308
 GameObject:
   m_ObjectHideFlags: 0
