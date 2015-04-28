@@ -72,7 +72,7 @@ public class TrackScript : MonoBehaviour
 				trans.rotation = Quaternion.Euler (0, 90, 0);
 				break;
 			case 	ModeManager.Track.Forest:
-				trans.position = new Vector3(370F, 1.04F, 77.7F);
+				trans.position = new Vector3(370F, 1.0F, 77.7F);
 				trans.rotation = Quaternion.Euler (0, 180, 0);
 				break;
 			case 	ModeManager.Track.Wooden:
@@ -153,7 +153,7 @@ public class TrackScript : MonoBehaviour
 				trans.rotation = Quaternion.Euler (0, 90, 0);
 				break;
 			case 	ModeManager.Track.Forest:
-				trans.position = new Vector3(377F, 4.04F, 77.7F);
+				trans.position = new Vector3(377F, 1.0F, 77.7F);
 				trans.rotation = Quaternion.Euler (0, 180, 0);
 				break;
 			case 	ModeManager.Track.Wooden:
@@ -189,7 +189,7 @@ public class TrackScript : MonoBehaviour
 				trans.rotation = Quaternion.Euler (0, 90, 0);
 				break;
 			case 	ModeManager.Track.Forest:
-				trans.position = new Vector3(361F, 8.04F, 77.7F);
+				trans.position = new Vector3(363F, 1.0F, 77.7F);
 				trans.rotation = Quaternion.Euler (0, 180, 0);
 				break;
 			case 	ModeManager.Track.Wooden:
