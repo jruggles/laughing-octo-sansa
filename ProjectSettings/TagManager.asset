@@ -11,6 +11,7 @@ TagManager:
   - Rear Wheel
   - Front Wheel
   - Finish
+  - TheGreen
   layers:
   - Default
   - TransparentFX

@@ -46,6 +46,10 @@ public class firstPersonController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (transform.position.y < -100)
+        {
+            GameOverHUD.enabled = true;
+        }
         //print (Time.time);
         raceTimeHUD.text = (Time.time.ToString());
         vAxis = Input.GetAxis("Vertical");
@@ -79,11 +83,7 @@ public class firstPersonController : MonoBehaviour {
                 GetComponent<firstPersonController>().enabled = false;
                 GetComponent<AIController>().enabled = true;
 				GameOverHUD.enabled = true;
-				if (Input.GetKey(KeyCode.Space))
-				{
-					Application.LoadLevel(6);
-					Debug.Log ("space");
-				}
+
 
             }
                 // lapTime = Time.time - previousLap;
@@ -182,6 +182,7 @@ public class firstPersonController : MonoBehaviour {
            // Debug.Log(frontHitObj.collider.gameObject + " " + backHitObj.collider.gameObject);
             if (backHitObj.collider.gameObject == frontHitObj.collider.gameObject)
             {
+                Debug.Log(backHitObj.collider.gameObject);
                 if (backHitObj.collider.gameObject == finishLine && onFinish == false)
                 {
                     onFinish = true;
@@ -192,6 +193,11 @@ public class firstPersonController : MonoBehaviour {
                 {
                     onFinish = false;
                 }
+                if (backHitObj.collider.gameObject.tag == "TheGreen")
+                {
+                    GameOverHUD.enabled = true;
+                }
+                
 
               Quaternion rotation = Quaternion.FromToRotation(transform.up, frontHitObj.normal);
              transform.rotation = rotation * transform.rotation;
