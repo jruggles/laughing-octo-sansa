@@ -51,7 +51,7 @@ public class firstPersonController : MonoBehaviour {
             GameOverHUD.enabled = true;
         }
         //print (Time.time);
-        raceTimeHUD.text = (Time.time.ToString());
+        raceTimeHUD.text = (Time.timeSinceLevelLoad.ToString());
         vAxis = Input.GetAxis("Vertical");
 		//Debug.Log (vAxis);
         rotateKart();
@@ -75,7 +75,7 @@ public class firstPersonController : MonoBehaviour {
             }
             else
             {
-                currentLap = Time.time - lapTotal;
+                currentLap = Time.timeSinceLevelLoad - lapTotal;
             }
             if (lap == 4)
             {
