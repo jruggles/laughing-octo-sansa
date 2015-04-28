@@ -186,10 +186,13 @@ public class TrackScript : MonoBehaviour
 		aiCart1.GetComponent<AIController> ().enabled = true;
 		aiCart1.GetComponent<firstPersonController> ().enabled = false;
 
+		aiCart1.GetComponent<AudioSource> ().enabled = false;
+
 		//	Turn off AudioListener and camera
 
 		cam = aiCart1.GetComponentInChildren<Camera> ();
 		cam.GetComponent<AudioListener>().enabled = false;
+		cam.GetComponent<AudioSource> ().enabled = false;
 		cam.enabled = false;
 		
 		//	Create AI 2
@@ -224,10 +227,13 @@ public class TrackScript : MonoBehaviour
 		aiCart2.GetComponent<AIController> ().enabled = true;
 		aiCart2.GetComponent<firstPersonController> ().enabled = false;
 		
+		aiCart2.GetComponent<AudioSource> ().enabled = false;
+		
 		//	Turn off AudioListener and camera
 		
 		cam = aiCart2.GetComponentInChildren<Camera> ();
 		cam.GetComponent<AudioListener>().enabled = false;
+		cam.GetComponent<AudioSource> ().enabled = false;
 		cam.enabled = false;
 
 	}	//	Start
