@@ -31,6 +31,7 @@ public class AIController : MonoBehaviour {
 
     void Start()
     {
+        //AI stuff
         Transform[] potentialWaypoints = waypointContainer.GetComponentsInChildren<Transform>();
 
         waypoints = new Transform[potentialWaypoints.Length - 1];
@@ -53,6 +54,7 @@ public class AIController : MonoBehaviour {
 
     void rotateAndMoveKart()
     {
+        //Raycast down and rotate to the normal of the object you hit
         Vector3 rayStartFront = transform.position + (transform.forward * 1f) - transform.up * .5f;
         Vector3 rayStartBack = transform.position - (transform.forward * .7f) - transform.up * .5f;
         RaycastHit frontHitObj;
@@ -67,6 +69,7 @@ public class AIController : MonoBehaviour {
             {
                 if (backHitObj.collider.gameObject == finishLine && onFinish == false)
                 {
+                    //Player goes over the finish line
                     onFinish = true;
                     OnCollisionEnter();
 
@@ -85,6 +88,7 @@ public class AIController : MonoBehaviour {
 
     Vector3 NavigateTowardWaypoint()
     {
+        //determines the next waypoint
         relativeWaypointPosition =
             waypoints[currentWaypoint].position - transform.position;
 
@@ -99,12 +103,11 @@ public class AIController : MonoBehaviour {
         }
 
         float angle = AngleSigned(relativeWaypointPosition, transform.forward, transform.up);
+
+        //Turns left or right depending on where the waypoint is relative to the kart
         if (angle > 5 && movementSpeed != 0)
         {
-            //Vector3.Slerp()
             transform.Rotate(new Vector3(0, -1f * rotatingSpeed * Time.deltaTime * ((movementSpeed / maxSpeed) + 0.25f), 0));
-           
-        
         }
         else if (angle < -5 && movementSpeed != 0)
         {
@@ -182,6 +185,7 @@ public class AIController : MonoBehaviour {
 
     public static float AngleSigned(Vector3 v1, Vector3 v2, Vector3 n)
     {
+        //Returns a signed angle.
         return Mathf.Atan2(
             Vector3.Dot(n, Vector3.Cross(v1, v2)),
             Vector3.Dot(v1, v2)) * Mathf.Rad2Deg;

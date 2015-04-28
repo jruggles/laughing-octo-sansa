@@ -96,7 +96,6 @@ public class firstPersonController : MonoBehaviour {
 
     public float determineMovementSpeed(float vAxis)
     {
-
         //If there in input on the vertical axis
         if (vAxis != 0)
         {
@@ -115,7 +114,6 @@ public class firstPersonController : MonoBehaviour {
                     {
                         movementSpeed += Time.deltaTime * 20;
                     }
-
                 } 
                 //If the player is trying to move backwards (negative vertical axis)
                 else if (vAxis < 0)
@@ -129,12 +127,8 @@ public class firstPersonController : MonoBehaviour {
                     {
                         movementSpeed -= Time.deltaTime * 10;
                     }     
-
                 }
-
             }
-           
-
         }
         //Else - If there is no input start to deaccelerate
         else 
@@ -149,7 +143,6 @@ public class firstPersonController : MonoBehaviour {
                 {
                     movementSpeed = 0;
                 }
-
             } 
             //Else if the player is moving backwards
             else if (movementSpeed < 0) 
@@ -161,14 +154,14 @@ public class firstPersonController : MonoBehaviour {
                 {
                     movementSpeed = 0;
                 }
-            }
-            
+            } 
         }
 		return movementSpeed;
     }
 
     void rotateKart()
     {
+        //Raycast down and rotate to the normal of the object you hit
         Vector3 rayStartFront = transform.position + (transform.forward * 1f) - transform.up * .5f;
         Vector3 rayStartBack = transform.position - (transform.forward * .7f) - transform.up * .5f;
         RaycastHit frontHitObj;
@@ -185,6 +178,7 @@ public class firstPersonController : MonoBehaviour {
                 Debug.Log(backHitObj.collider.gameObject);
                 if (backHitObj.collider.gameObject == finishLine && onFinish == false)
                 {
+                    //If the play goes over the finish line
                     onFinish = true;
                     OnCollisionEnter();
                     
