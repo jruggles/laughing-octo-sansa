@@ -12,7 +12,7 @@ public class WaypointScript : MonoBehaviour {
     {
         if (!next)
         {
-            print("This waypoint is not connected; fix the problem" + this);
+           print("This waypoint is not connected; fix the problem" + this);
         }
         if (isStart)
         {
