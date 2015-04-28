@@ -3,8 +3,10 @@ using System.Collections;
 
 public class TrackScript : MonoBehaviour
 {
-	static private GameObject cartPrefab;
-	static public GameObject	cart;
+	static private	GameObject 	cartPrefab;
+	static public	GameObject	cart;
+	static public	GameObject	aiCart1;
+	static public	GameObject	aiCart2;
 
 	//--------------------------------------------------------------------------//
 	//	Start
@@ -84,5 +86,115 @@ public class TrackScript : MonoBehaviour
 		cart.GetComponent<AIController> ().enabled = false;
 		cart.GetComponent<firstPersonController> ().enabled = true;
 
-	}
+		//	Make ai carts
+
+		string prefabName1 = "";
+		string prefabName2 = "";
+
+		switch (ModeManager.playerChoices.avatar)
+		{
+			case	ModeManager.Avatar.Kart1Player1:
+				prefabName1 = "Kart2Player2";
+				prefabName2 = "Kart3Player3";
+				break;
+			case	ModeManager.Avatar.Kart1Player2:
+				prefabName1 = "Kart2Player1";
+				prefabName2 = "Kart3Player3";
+				break;
+			case	ModeManager.Avatar.Kart1Player3:
+				prefabName1 = "Kart2Player2";
+				prefabName2 = "Kart3Player1";
+				break;
+			case	ModeManager.Avatar.Kart2Player1:
+				prefabName1 = "Kart1Player2";
+				prefabName2 = "Kart3Player3";
+				break;
+			case	ModeManager.Avatar.Kart2Player2:
+				prefabName1 = "Kart1Player1";
+				prefabName2 = "Kart3Player3";
+				break;
+			case	ModeManager.Avatar.Kart2Player3:
+				prefabName1 = "Kart1Player2";
+				prefabName2 = "Kart3Player1";
+				break;
+			case	ModeManager.Avatar.Kart3Player1:
+				prefabName1 = "Kart2Player2";
+				prefabName2 = "Kart1Player3";
+				break;
+			case	ModeManager.Avatar.Kart3Player2:
+				prefabName1 = "Kart2Player1";
+				prefabName2 = "Kart1Player3";
+				break;
+			case	ModeManager.Avatar.Kart3Player3:
+				prefabName1 = "Kart2Player2";
+				prefabName2 = "Kart1Player1";
+				break;
+		}
+
+		//	Create AI 1
+		
+		cartPrefab = (GameObject)	Resources.Load
+			(prefabName1, typeof(GameObject));
+		
+		aiCart1	=	(GameObject) Instantiate (cartPrefab);
+		
+		//	Set transform AI 1
+		
+		trans = aiCart1.GetComponent<Transform> ();
+		
+		switch(ModeManager.playerChoices.track)
+		{
+			case 	ModeManager.Track.Cloud:
+				trans.position = new Vector3(63.6F, 0.7F, 8.3F);
+				trans.rotation = Quaternion.Euler (0, 90, 0);
+				break;
+			case 	ModeManager.Track.Forest:
+				trans.position = new Vector3(377F, 4.04F, 77.7F);
+				trans.rotation = Quaternion.Euler (0, 180, 0);
+				break;
+			case 	ModeManager.Track.Wooden:
+				trans.position = new Vector3(-19F, 3.92F, 41.97F);
+				trans.rotation = Quaternion.Euler (0, 90, 0);
+				break;
+		}
+		
+		//	Turn on AI script & turn off firstPersonController script
+		
+		aiCart1.GetComponent<AIController> ().enabled = true;
+		aiCart1.GetComponent<firstPersonController> ().enabled = false;
+		
+		//	Create AI 2
+		
+		cartPrefab = (GameObject)	Resources.Load
+			(prefabName2, typeof(GameObject));
+		
+		aiCart2	=	(GameObject) Instantiate (cartPrefab);
+		
+		//	Set transform AI 2
+		
+		trans = aiCart2.GetComponent<Transform> ();
+		
+		switch(ModeManager.playerChoices.track)
+		{
+			case 	ModeManager.Track.Cloud:
+				trans.position = new Vector3(63.6F, 0.7F, -8.3F);
+				trans.rotation = Quaternion.Euler (0, 90, 0);
+				break;
+			case 	ModeManager.Track.Forest:
+				trans.position = new Vector3(361F, 8.04F, 77.7F);
+				trans.rotation = Quaternion.Euler (0, 180, 0);
+				break;
+			case 	ModeManager.Track.Wooden:
+				trans.position = new Vector3(-19F, 3.92F, 24.87F);
+				trans.rotation = Quaternion.Euler (0, 90, 0);
+				break;
+		}		
+
+		//	Turn on AI script & turn off firstPersonController script
+		
+		aiCart2.GetComponent<AIController> ().enabled = true;
+		aiCart2.GetComponent<firstPersonController> ().enabled = false;
+		
+	}	//	Start
+
 }
