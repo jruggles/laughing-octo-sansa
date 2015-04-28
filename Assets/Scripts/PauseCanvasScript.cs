@@ -40,7 +40,7 @@ public class PauseCanvasScript : MonoBehaviour {
 
 	public void quitConfirm()
 	{
-		Application.Quit();
+		Application.LoadLevel(3);
 		Debug.Log("you quit");
 	}
 
