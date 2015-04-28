@@ -29,10 +29,8 @@ public class StartTimerScript : MonoBehaviour {
 
 	IEnumerator CountDown()
 	{
-		print ("Ouside for loop.");
 		for (int i = 3; i > 0; i--)
 		{
-			print (i);
 			TimerText.text	=	i.ToString ();
 			yield return StartCoroutine(WaitForRealTime(1));
 		}

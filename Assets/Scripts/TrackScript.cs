@@ -86,10 +86,29 @@ public class TrackScript : MonoBehaviour
 		cart.GetComponent<AIController> ().enabled = false;
 		cart.GetComponent<firstPersonController> ().enabled = true;
 
+		//	Set audio volume for effects
+		
+		AudioSource audio = cart.GetComponent<AudioSource> ();
+		
+		if (ModeManager.volSettings.areEffectsMuted)
+			audio.volume = 0.0f;
+		else
+			audio.volume = ModeManager.volSettings.effectsVol / 100.0F;
+		
 		//	Turn on camera
-		
-		cart.GetComponentInChildren<Camera> ().enabled = true;
-		
+
+		Camera cam = cart.GetComponentInChildren<Camera> ();
+		cam.enabled = true;
+
+		//	Set audio volume for music
+
+		audio = cam.GetComponent<AudioSource> ();
+
+		if (ModeManager.volSettings.isMusicMuted)
+			audio.volume = 0.0f;
+		else
+			audio.volume = ModeManager.volSettings.musicVol / 100.0F;
+
 		//	Make ai carts
 
 		string prefabName1 = "";
@@ -167,9 +186,11 @@ public class TrackScript : MonoBehaviour
 		aiCart1.GetComponent<AIController> ().enabled = true;
 		aiCart1.GetComponent<firstPersonController> ().enabled = false;
 
-		//	Turn off camera
+		//	Turn off AudioListener and camera
 
-		aiCart1.GetComponentInChildren<Camera> ().enabled = false;
+		cam = aiCart1.GetComponentInChildren<Camera> ();
+		cam.GetComponent<AudioListener>().enabled = false;
+		cam.enabled = false;
 		
 		//	Create AI 2
 		
@@ -203,10 +224,12 @@ public class TrackScript : MonoBehaviour
 		aiCart2.GetComponent<AIController> ().enabled = true;
 		aiCart2.GetComponent<firstPersonController> ().enabled = false;
 		
-		//	Turn off camera
+		//	Turn off AudioListener and camera
 		
-		aiCart2.GetComponentInChildren<Camera> ().enabled = false;
-		
+		cam = aiCart2.GetComponentInChildren<Camera> ();
+		cam.GetComponent<AudioListener>().enabled = false;
+		cam.enabled = false;
+
 	}	//	Start
 
 }
