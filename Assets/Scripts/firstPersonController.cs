@@ -79,9 +79,10 @@ public class firstPersonController : MonoBehaviour {
                 GetComponent<firstPersonController>().enabled = false;
                 GetComponent<AIController>().enabled = true;
 				GameOverHUD.enabled = true;
-				if (Input.GetKeyDown(KeyCode.Space))
+				if (Input.GetKey(KeyCode.Space))
 				{
 					Application.LoadLevel(6);
+					Debug.Log ("space");
 				}
 
             }
