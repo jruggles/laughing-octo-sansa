@@ -9,12 +9,12 @@ public class AIController : MonoBehaviour {
     public float rotatingSpeed = 0;
     private Transform[] waypoints;
     private int currentWaypoint = 0;
-    public GameObject waypointContainer;
+    private GameObject waypointContainer;
     private float rotationSpeed = 4.0f;
     private Quaternion lookRotation;
 	private Vector3 relativeWaypointPosition;
     private bool onFinish = false;
-    public GameObject finishLine;
+    private GameObject finishLine;
 
     public int lap = 0;
     public float lapTime = 0;
@@ -24,6 +24,9 @@ public class AIController : MonoBehaviour {
     void Awake()
     {
         charControl = GetComponent<CharacterController>();
+        finishLine = GameObject.Find("StartFinish");
+        waypointContainer = GameObject.Find("WaypointContainer");
+
     }
 
     void Start()

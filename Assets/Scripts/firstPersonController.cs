@@ -11,9 +11,9 @@ public class firstPersonController : MonoBehaviour {
     public float vAxis = 0;
     public Canvas HUD;
     public GameObject finishLine;
-    public Text raceTimeHUD;
-    public Text lapTimeHUD;
-    public Text lapNumberHUD;
+    private Text raceTimeHUD;
+    private Text lapTimeHUD;
+    private Text lapNumberHUD;
     private bool onFinish = false;
     private float currentLap= 0;
     private float previousLap= 0;
@@ -26,12 +26,19 @@ public class firstPersonController : MonoBehaviour {
 
     void Start()
     {
-        lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
-        lapNumberHUD.text = "Lap: " + (lap.ToString()) + "/3";
+        
     }
 
     void Awake() {
         charControl = GetComponent<CharacterController>();
+        finishLine = GameObject.Find("StartFinish");
+        HUD = GameObject.Find("HUD").GetComponent<Canvas>();
+        raceTimeHUD = GameObject.Find("RaceTime").GetComponent<Text>();
+        lapTimeHUD = GameObject.Find("LapTime").GetComponent<Text>();
+        lapNumberHUD = GameObject.Find("LapNumber").GetComponent<Text>();
+
+        lapTimeHUD.text = "Previous Lap: " + (lapTime.ToString());
+        lapNumberHUD.text = "Lap: " + (lap.ToString()) + "/3";
     }
 
 	// Update is called once per frame
