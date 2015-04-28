@@ -21974,48 +21974,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1862574437}
   m_RootOrder: 420
---- !u!1001 &734873639
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -26.8999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 40.7000008
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .704822183
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .709384084
-      objectReference: {fileID: 0}
-    - target: {fileID: 441224, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: bac297966662fbd46be14f60da4a965e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &741503686
 GameObject:
   m_ObjectHideFlags: 0
@@ -40137,8 +40095,6 @@ Terrain:
     serializedVersion: 2
     rgba: 4286545791
   m_LegacyShininess: .078125
-  m_UseDefaultSmoothness: 1
-  m_DefaultSmoothness: 0
   m_MaterialTemplate: {fileID: 0}
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: 1
